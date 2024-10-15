@@ -1,6 +1,7 @@
 package com.hhplus.concert.interfaces.presentation.controller;
 
 import com.hhplus.concert.common.exception.CustomException;
+import com.hhplus.concert.domain.service.TokenService;
 import com.hhplus.concert.interfaces.presentation.dto.request.TokenRequestDto;
 import com.hhplus.concert.interfaces.presentation.dto.response.TokenResponseDto;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-public class QueueController {
+public class TokenController {
+
+    private TokenService tokenService;
 
     @PostMapping("/token")
     public ResponseEntity<TokenResponseDto> createToken(@RequestBody TokenRequestDto dto){
