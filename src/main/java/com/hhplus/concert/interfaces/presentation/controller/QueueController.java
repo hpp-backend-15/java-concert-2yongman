@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-public class WaitingTokenController {
+public class QueueController {
 
     @PostMapping("/token")
     public ResponseEntity<TokenResponseDto> createToken(@RequestBody TokenRequestDto dto){
