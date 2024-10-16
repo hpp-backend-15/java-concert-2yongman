@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface TokenJpaRepository extends JpaRepository<WaitingToken,Long> {
 
     @Query("SELECT COUNT(T) FROM WaitingToken T WHERE T.status = 'WAITING'")
-    Long countWaitingToken();
+    Integer countWaitingToken();
 }

@@ -1,6 +1,10 @@
 package com.hhplus.concert.domain.repository;
 
+import com.hhplus.concert.domain.entity.WaitingToken;
+
 public interface TokenRepository {
 
-    Long count();
+    Integer count();
+
+    WaitingToken saveToken(WaitingToken waitingToken);
 }

@@ -11,14 +11,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class TokenController {
 
-    private TokenService tokenService;
+    private final TokenService tokenService;
+
+    public TokenController(TokenService tokenService) {
+        this.tokenService = tokenService;
+    }
 
     @PostMapping("/token")
     public ResponseEntity<TokenResponseDto> createToken(@RequestBody TokenRequestDto dto){
         try {
-            return ResponseEntity.ok(new TokenResponseDto("12a3a45a",30L,"2024-10-09T12:00:00"));
-        } catch (IllegalArgumentException e){
-            throw new CustomException("400", "invalid userId");
+            return ResponseEntity.ok(tokenService.createToken(dto.getUserId()));
         } catch (Exception e){
             throw new CustomException("500","Internal server error");
         }

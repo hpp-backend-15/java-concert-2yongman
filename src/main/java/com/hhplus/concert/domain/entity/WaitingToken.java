@@ -31,6 +31,19 @@ public class WaitingToken {
     private LocalDateTime endTime;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user")
     private User user;
+
+    public WaitingToken(String token, WaitingStatus status, Integer waitingNumber, LocalDateTime issueTime, LocalDateTime endTime, User user) {
+        this.token = token;
+        this.status = status;
+        this.waitingNumber = waitingNumber;
+        this.issueTime = issueTime;
+        this.endTime = endTime;
+        this.user = user;
+    }
+
+    public static WaitingToken makeWaitingToken(String token, WaitingStatus status, Integer waitingNumber, LocalDateTime issueTime, LocalDateTime endTime, User user) {
+        return new WaitingToken(token, status, waitingNumber, issueTime, endTime, user);
+    }
 }

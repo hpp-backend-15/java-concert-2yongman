@@ -1,5 +1,6 @@
 package com.hhplus.concert.infra.persistance;
 
+import com.hhplus.concert.domain.entity.WaitingToken;
 import com.hhplus.concert.domain.repository.TokenRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +14,12 @@ public class TokenRepositoryImpl implements TokenRepository {
     }
 
     @Override
-    public Long count() {
+    public Integer count() {
         return tokenJpaRepository.countWaitingToken();
+    }
+
+    @Override
+    public WaitingToken saveToken(WaitingToken waitingToken) {
+        return tokenJpaRepository.save(waitingToken);
     }
 }
